@@ -11,8 +11,8 @@ jobs:
         env:
           JIRA_ACCOUNT_URL: https://ld-appdev.atlassian.net/
           JIRA_API_TOKEN: uJUnvuoYt3fl2xzmofLW18AF
-          JIRA_ISSUE_DESCRIPTION: Demo'ing Jira Issue Creation
-          JIRA_ISSUE_SUMMARY: Demo'ing Jira Issue Creation
-          JIRA_ISSUE_TYPE: Demo'ing Jira Issue Creation
+          JIRA_ISSUE_DESCRIPTION: Demoing Jira Issue Creation
+          JIRA_ISSUE_SUMMARY: Demoing Jira Issue Creation
+          JIRA_ISSUE_TYPE: Demoing Jira Issue Creation
           JIRA_PROJECT: DAI
           JIRA_USERNAME: loic.diridollou@gmail.com
