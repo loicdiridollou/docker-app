@@ -22,6 +22,10 @@ jobs:
       with:
         project: DAI
         issuetype: Task
-        summary: Build failed
+        summary: |
+          Build completed for ${{ github.repository }}
+        description: |
+          Compare branch
+        fields: '{"summary": "test"}'
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
