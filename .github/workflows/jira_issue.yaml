@@ -21,7 +21,7 @@ jobs:
       if: failure()
       with:
         project: DAI
-        issuetype: Bug
-        summary: "Build failed for ${{ github.repository }}"
+        issuetype: Task
+        summary: Build failed
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
