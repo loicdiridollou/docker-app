@@ -9,6 +9,7 @@ jobs:
     steps:
     - name: Failing step
       run: exit 1
+      continue-on-error: true
     - name: Login
       uses: atlassian/gajira-login@master
       env:
@@ -24,7 +25,7 @@ jobs:
         summary: |
           Build completed for ${{ github.repository }}
         description: |
-          Compare ${{ failure() }}
+          Compare
         fields: '{"summary": "test2"}'
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
