@@ -24,9 +24,9 @@ jobs:
         project: DAI
         issuetype: Task
         summary: |
-          Build completed for ${{ github.repository }}
+          Build completed grefor ${{ github.repository }}
         description: |
-          Compare
+          Comparegtrwhvtr
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
     - uses: actions/checkout@v2
