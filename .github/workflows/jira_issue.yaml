@@ -7,24 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     name: Jira Example
     steps:
+    - name: Failing step
+      run: exit 1
     - name: Login
       uses: atlassian/gajira-login@master
       env:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-
     - name: Create
       id: create
       uses: atlassian/gajira-create@master
+      if: failure()
       with:
         project: DAI
-        issuetype: Task
-        summary: |
-          Build completed for ${{ github.repository }}
-        description: |
-          Compare branch
-        fields: '{"summary": "test"}'
-
+        issuetype: Bug
+        summary: Build failed for ${{ github.repository }}
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
