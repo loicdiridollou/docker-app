@@ -19,7 +19,7 @@ jobs:
       uses: atlassian/gajira-create@master
       with:
         project: DAI
-        issuetype: Build
+        issuetype: Task
         summary: |
           Build completed for ${{ github.repository }}
         description: |
