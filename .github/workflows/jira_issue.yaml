@@ -1,22 +1,18 @@
 on: push
-name: Jira Issue Creation when build fails
+name: Jira Issue Creation Demo
 jobs:
-  a-failing-job:
+  jiraIssueCreation:
+    name: Jira Issue Creation Demo
     runs-on: ubuntu-latest
     steps:
-    - name: Failing step
-      run: exit 1
-    - name: Login to Jira
-      uses: atlassian/gajira-login@master
-      if: failure()
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-    - name: Create Jira issue on job failure
-      uses: atlassian/gajira-create@master
-      if: failure()
-      with:
-        project: DAI
-        issuetype: Build
-        summary: Build failed for ${{ github.repository }}
+      - uses: actions/checkout@master
+      - name: Jira Creation Demo
+        uses: bryannice/gitactions-jira-issue-creation@master
+        env:
+          JIRA_ACCOUNT_URL: https://ld-appdev.atlassian.net/
+          JIRA_API_TOKEN: uJUnvuoYt3fl2xzmofLW18AF
+          JIRA_ISSUE_DESCRIPTION: Demo'ing Jira Issue Creation
+          JIRA_ISSUE_SUMMARY: Demo'ing Jira Issue Creation
+          JIRA_ISSUE_TYPE: Demo'ing Jira Issue Creation
+          JIRA_PROJECT: DAI
+          JIRA_USERNAME: loic.diridollou@gmail.com
