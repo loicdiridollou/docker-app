@@ -11,7 +11,7 @@ jobs:
       run: exit 1
       continue-on-error: true
     - name: Log failure
-      run: echo ${{ failure() }}
+      run: echo failure()
     - name: Login
       uses: atlassian/gajira-login@master
       env:
