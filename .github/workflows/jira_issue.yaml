@@ -1,3 +1,5 @@
+on: push
+name: Jira Issue Creation when build fails
 jobs:
   a-failing-job:
     runs-on: ubuntu-latest
@@ -15,6 +17,6 @@ jobs:
       uses: atlassian/gajira-create@master
       if: failure()
       with:
-        project: GA
+        project: DAI
         issuetype: Build
         summary: Build failed for ${{ github.repository }}
