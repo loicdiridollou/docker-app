@@ -20,4 +20,9 @@ jobs:
       uses: atlassian/gajira-create@master
       if: ${{ failure() }}
       with:
-        run: echo "test"
+        project: DAI
+        issuetype: Task
+        summary: |
+          Build completed grefor ${{ github.repository }}
+        description: |
+          Comparegtrwhvtr
