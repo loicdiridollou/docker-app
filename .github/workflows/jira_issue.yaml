@@ -7,14 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Jira Example
     steps:
+    - name: Failing step
+      run: exit 1
     - name: Login
       uses: atlassian/gajira-login@master
+      if: always()
       env:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-    - name: Failing step
-      run: exit 1
     - name: Create
       id: create
       uses: atlassian/gajira-create@master
