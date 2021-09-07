@@ -42,6 +42,14 @@ jobs:
         project: DAI
         issuetype: Task
         summary: |
-          Build completed grefor ${{ github.repository }}
+          Build failed for ${{ github.repository }}
+        description: |
+          Comparegtrwhvtr
+      if: success()
+      with:
+        project: DAI
+        issuetype: Task
+        summary: |
+          Build completed for ${{ github.repository }}
         description: |
           Comparegtrwhvtr
