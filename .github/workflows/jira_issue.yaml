@@ -9,6 +9,7 @@ jobs:
     steps:
     - name: Failing step
       run: exit 1
+      output: failure()
       continue-on-error: true
     - name: Login
       uses: atlassian/gajira-login@master
@@ -27,5 +28,3 @@ jobs:
           Build completed grefor ${{ github.repository }}
         description: |
           Comparegtrwhvtr
-    - name:
-      output: failure()
