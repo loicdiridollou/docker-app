@@ -19,7 +19,7 @@ jobs:
     - name: Create
       id: create
       uses: atlassian/gajira-create@master
-      if: failed()
+      if: failure()
       with:
         project: DAI
         issuetype: Task
