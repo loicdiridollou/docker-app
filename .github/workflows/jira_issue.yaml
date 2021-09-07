@@ -10,8 +10,6 @@ jobs:
     - name: Failing step
       run: exit 1
       continue-on-error: true
-    - name: Log failure
-      run: echo failure()
     - name: Login
       uses: atlassian/gajira-login@master
       env:
@@ -21,7 +19,7 @@ jobs:
     - name: Create
       id: create
       uses: atlassian/gajira-create@master
-      if: failure()
+      if: failed()
       with:
         project: DAI
         issuetype: Task
@@ -29,21 +27,3 @@ jobs:
           Build completed grefor ${{ github.repository }}
         description: |
           Comparegtrwhvtr
-    - name: Log created issue
-      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with pylint
-      run: |
-        pylint ./application/*.py
-    - name: Test with pytest
-      run: |
-        python -m pytest ./tests/
