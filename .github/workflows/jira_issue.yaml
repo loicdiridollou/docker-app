@@ -9,7 +9,6 @@ jobs:
     steps:
     - name: Failing step
       run: exit 1
-      continue-on-error: true
     - name: Login
       uses: atlassian/gajira-login@master
       env:
