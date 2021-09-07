@@ -1,4 +1,8 @@
-on: push
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 name: Jira Example
 
@@ -7,8 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     name: Jira Example
     steps:
-    - name: Failing step
-      run: exit 1
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with pylint
+      run: |
+        pylint ./application/*.py
+    - name : Test with pytest
+        run: |
+          python -m pytest ./tests/
     - name: Login
       uses: atlassian/gajira-login@master
       if: always()
@@ -19,7 +37,7 @@ jobs:
     - name: Create
       id: create
       uses: atlassian/gajira-create@master
-      if: ${{ failure() }}
+      if: failure()
       with:
         project: DAI
         issuetype: Task
