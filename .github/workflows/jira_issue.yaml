@@ -9,7 +9,6 @@ jobs:
     steps:
     - name: Failing step
       run: exit 1
-      output: failure()
       continue-on-error: true
     - name: Login
       uses: atlassian/gajira-login@master
@@ -20,11 +19,6 @@ jobs:
     - name: Create
       id: create
       uses: atlassian/gajira-create@master
-      if: failure()
+      if: ${{ failure() }}
       with:
-        project: DAI
-        issuetype: Task
-        summary: |
-          Build completed grefor ${{ github.repository }}
-        description: |
-          Comparegtrwhvtr
+        run: echo "test"
