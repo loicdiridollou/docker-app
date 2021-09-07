@@ -27,3 +27,5 @@ jobs:
           Build completed grefor ${{ github.repository }}
         description: |
           Comparegtrwhvtr
+    - name:
+      run: echo ${{ failure() }}
