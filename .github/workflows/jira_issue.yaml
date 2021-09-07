@@ -28,4 +28,4 @@ jobs:
         description: |
           Comparegtrwhvtr
     - name:
-      run: echo ${{ failure() }}
+      output: failure()
