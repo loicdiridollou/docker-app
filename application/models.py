@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 
-database_path = os.environ.get('DATABASE_URL')
+database_path = os.environ.get('DATABASE_URL').replace('postgres', 'postgresql')
 #, "postgres://{}:{}@{}/{}".format(database_setup["username"], database_setup["password"], 
 # database_setup["port"], database_setup["database_name"]))
 

@@ -28,7 +28,7 @@ def create_app(test_config=None):
 
     @app.route('/actors')
     def list_actors():
-        actors = Actor.query.all()
+        actors = [actor.format() for actor in Actor.query.all()]        
         return jsonify({"success": True, "actors": actors}), 200
 
 
