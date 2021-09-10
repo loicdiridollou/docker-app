@@ -7,7 +7,7 @@ Flask==2.0.1
 Flask-Cors==3.0.10
 Flask-SQLAlchemy==2.5.1
 greenlet==1.1.0
-gunicorn
+gunicorn==20.1.0
 iniconfig==1.1.1
 isort==5.9.2
 itsdangerous==2.0.1
@@ -17,6 +17,7 @@ MarkupSafe==2.0.1
 mccabe==0.6.1
 packaging==21.0
 pluggy==0.13.1
+psycopg2==2.9.1
 py==1.10.0
 pycodestyle==2.7.0
 pyling==0.2
