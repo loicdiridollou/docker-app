@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, Integer, Date
 from flask_sqlalchemy import SQLAlchemy
 
 
-DATABASE_PATH = os.environ.get('DATABASE_URL').replace('postgres', 'postgresql')
+DATABASE_PATH = os.environ.get('DATABASE_URL')
 
 db = SQLAlchemy()
 
