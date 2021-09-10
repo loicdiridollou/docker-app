@@ -1,11 +1,11 @@
 # application/models.py
-import os
+import os # pylint: disable=unused-import
 from datetime import date
 from sqlalchemy import Column, String, Integer, Date
 from flask_sqlalchemy import SQLAlchemy
 
 
-DATABASE_PATH = 'postgresql://rlrkfvwqfrqqnt:095a3fbe34d7a5eee144d8c74f909b1079dd521c2bdc0edb5ecd4178dd03ac5b@ec2-54-147-126-173.compute-1.amazonaws.com:5432/d8g32a2871o87o'
+DATABASE_PATH = 'postgresql://rlrkfvwqfrqqnt:095a3fbe34d7a5eee144d8c74f909b1079dd521c2bdc0edb5ecd4178dd03ac5b@ec2-54-147-126-173.compute-1.amazonaws.com:5432/d8g32a2871o87o' # pylint: disable=line-too-long
 #os.environ.get('DATABASE_URL').replace('postgres', 'postgresql')
 
 db = SQLAlchemy()
