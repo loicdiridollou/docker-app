@@ -1,17 +1,15 @@
+# application/models.py
 import os
 from datetime import date
 from sqlalchemy import Column, String, Integer, Date
 from flask_sqlalchemy import SQLAlchemy
 
 
-
-database_path = os.environ.get('DATABASE_URL').replace('postgres', 'postgresql')
-#, "postgres://{}:{}@{}/{}".format(database_setup["username"], database_setup["password"], 
-# database_setup["port"], database_setup["database_name"]))
+DATABASE_PATH = os.environ.get('DATABASE_URL').replace('postgres', 'postgresql')
 
 db = SQLAlchemy()
 
-def db_setup(app, database_path=database_path):
+def db_setup(app, database_path=DATABASE_PATH):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
@@ -45,7 +43,7 @@ def db_populate():
 # id, name, gender, age
 ########################################
 
-class Actor(db.Model):  
+class Actor(db.Model):
     __tablename__ = 'actors'
 
     id = Column(Integer, primary_key=True)
@@ -83,7 +81,7 @@ class Actor(db.Model):
 # id, title, release_date, actors
 ########################################
 
-class Movie(db.Model):  
+class Movie(db.Model):
     __tablename__ = 'movies'
 
     id = Column(Integer, primary_key=True)

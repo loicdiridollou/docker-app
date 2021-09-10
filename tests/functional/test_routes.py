@@ -1,4 +1,5 @@
 from application import create_app
+import json
 
 def test_home_page():
     app = create_app()
@@ -6,4 +7,5 @@ def test_home_page():
     with app.test_client() as test_client:
         response = test_client.get('/')
         assert response.status_code == 200
-        assert b"Hello World!" in response.data
+        data = json.loads(response.get_data(as_text=True))
+        assert data['message'] == 'healthy'

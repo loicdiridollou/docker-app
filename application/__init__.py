@@ -23,12 +23,11 @@ def create_app(test_config=None):
 
     @app.route('/')
     def home():
-        return jsonify({"message": "Healthy"})
-
+        return jsonify({'message': 'healthy'}), 200
 
     @app.route('/actors')
     def list_actors():
-        actors = [actor.format() for actor in Actor.query.all()]        
+        actors = [actor.format() for actor in Actor.query.all()]
         return jsonify({"success": True, "actors": actors}), 200
 
 
