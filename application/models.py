@@ -6,12 +6,13 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 DATABASE_PATH = os.environ.get('DATABASE_URL').replace('postgres', 'postgresql')
-print(DATABASE_PATH)
+
 db = SQLAlchemy()
 
 def db_setup(app, database_path=DATABASE_PATH):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    print(app.config["SQLALCHEMY_DATABASE_URI"][:10])
     db.app = app
     db.init_app(app)
     db.create_all()
