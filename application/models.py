@@ -6,8 +6,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 if not os.environ.get('DATABASE_URI'):
     import yaml
-    config = yaml.full_load(open('config_env.yaml'))['data']
-    os.environ.update(config)
+    with open('config_env.yaml') as config_file:
+        config = yaml.full_load(config_file)['data']
+        os.environ.update(config)
 
 DATABASE_PATH = os.environ.get('DATABASE_URL').replace("postgres://", "postgresql://", 1)
 
