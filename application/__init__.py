@@ -1,6 +1,4 @@
 # application/__init__.py
-import os
-import json
 from flask import Flask, abort, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -30,9 +28,15 @@ def create_app(test_config=None):
         actors = [actor.format() for actor in Actor.query.all()]
         return jsonify({"success": True, "actors": actors}), 200
 
+    @app.route('/movies')
+    def list_movies():
+        movies = [movie.format() for movie in Movie.query.all()]
+        return jsonify({"success": True, "movies": movies}), 200
+
+
 
     @app.errorhandler(404)
-    def not_found(error):
+    def not_found(error): # pylint: disable=unused-argument
         return jsonify({'success': False,
                         'error': 404,
                         'message': 'resource not found'
