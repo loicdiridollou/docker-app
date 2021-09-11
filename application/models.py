@@ -4,7 +4,7 @@ from datetime import date
 from sqlalchemy import Column, String, Integer, Date
 from flask_sqlalchemy import SQLAlchemy
 
-if not os.environ.get('DATABASE_URI'):
+if not os.environ.get('DATABASE_URL'):
     import yaml
     with open('config_env.yaml') as config_file:
         config = yaml.full_load(config_file)['data']
