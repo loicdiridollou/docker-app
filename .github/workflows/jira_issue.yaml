@@ -25,6 +25,8 @@ jobs:
       run: |
         pylint ./application/*.py
     - name : Test with pytest
+      env: 
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
       run: |
         python -m pytest ./tests/
     - name: Login

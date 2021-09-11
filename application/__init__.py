@@ -8,7 +8,7 @@ from application.models import db_reset, db_setup, Actor, Movie
 
 
 def create_app(test_config=None):
-    """Creating the app
+    """Creating the app and db
     """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(SECRET_KEY='dev')
