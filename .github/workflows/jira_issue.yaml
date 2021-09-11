@@ -47,14 +47,3 @@ jobs:
           Build failed for ${{ github.repository }}
         description: |
           Comparegtrwhvtr
-    - name: Create
-      id: create
-      uses: atlassian/gajira-create@master
-      if: success()
-      with:
-        project: DAI
-        issuetype: Task
-        summary: |
-          Build completed for ${{ github.repository }}
-        description: |
-          Comparegtrwhvtr
