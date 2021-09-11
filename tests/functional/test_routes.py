@@ -1,5 +1,7 @@
-from application import create_app
+# tests/functional/test_routes.py
 import json
+from application import create_app
+
 
 def test_home_page():
     app = create_app()
