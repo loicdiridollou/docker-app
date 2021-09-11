@@ -9,3 +9,9 @@ def test_home_page():
         assert response.status_code == 200
         data = json.loads(response.get_data(as_text=True))
         assert data['message'] == 'healthy'
+
+        response = test_client.get('/actors')
+        assert response.status_code == 200
+
+        response = test_client.get('/movies')
+        assert response.status_code == 200
