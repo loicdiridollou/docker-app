@@ -23,10 +23,67 @@ def create_app(test_config=None):
     def home():
         return jsonify({'message': 'healthy'}), 200
 
-    @app.route('/actors')
+    ## Actor routes
+
+    @app.route('/actors', methods=['GET'])
     def list_actors():
         actors = [actor.format() for actor in Actor.query.all()]
         return jsonify({"success": True, "actors": actors}), 200
+
+    @app.route('/actors', methods=['POST'])
+    def add_actor():
+        body = request.get_json()
+
+        if body is None:
+            return abort(400)
+
+        name = body.get('name')
+        age = body.get('age')
+        gender = body.get('gender')
+
+        new_actor = Actor(name=name, age=age, gender=gender)
+        new_actor.insert()
+
+        return jsonify({'success': True,
+                        'created': new_actor.id})
+
+    @app.route('/actors/<actor_id>', methods=['PATCH'])
+    def update_actor(actor_id):
+        actor = Actor.query.filter(Actor.id == actor_id).one_or_none()
+        body = request.get_json()
+
+        if actor is None or body is None:
+            abort(400)
+
+        name = body.get('name')
+        age = body.get('age')
+        gender = body.get('gender')
+
+        if name:
+            actor.name = name
+        if age:
+            actor.age = age
+        if gender:
+            actor.gender = gender
+
+        actor.update()
+
+        return jsonify({'success': True,
+                        'actor updated': actor_id}), 200
+
+    @app.route('/actors/<actor_id>', methods=['DELETE'])
+    def delete_actors(actor_id):
+        actor = Actor.query.filter(Actor.id == actor_id).one_or_none()
+
+        if actor is None:
+            abort(400)
+
+        actor.delete()
+
+        return jsonify({'success': True,
+                        'actor deleted': actor_id}), 200
+
+    ## Movie routes
 
     @app.route('/movies')
     def list_movies():
@@ -41,6 +98,14 @@ def create_app(test_config=None):
                         'error': 404,
                         'message': 'resource not found'
                         }), 404
+
+    @app.errorhandler(400)
+    def bet_request(error): # pylint: disable=unused-argument
+        return jsonify({'success': False,
+                        'error': 400,
+                        'message': 'bad request'
+                        }), 400
+
 
 
     return app
