@@ -30,8 +30,8 @@ def test_movie_page():
 def test_post_patch_delete_actor():
     app = create_app()
     with app.test_client() as test_client:
-        response = test_client.post('/actors', 
-                                    data=json.dumps({'name': 'John', 'age': 25, 'gender': 'male'}), 
+        response = test_client.post('/actors',
+                                    data=json.dumps({'name': 'John', 'age': 25, 'gender': 'male'}),
                                     content_type='application/json')
         assert response.status_code == 200
         created_id = json.loads(response.data)['created']
