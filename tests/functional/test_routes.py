@@ -18,7 +18,6 @@ def test_actor_page():
     with app.test_client() as test_client:
         response = test_client.get('/actors')
         assert response.status_code == 200
-    assert False
 
 
 def test_movie_page():
