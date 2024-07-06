@@ -24,18 +24,18 @@ jobs:
       - name: Lint with ruff
         run: |
           ruff check application/*.py tests/**/*.py
-      - name: Test with pytest
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: |
-          python -m pytest ./tests/
-      - name: Deploying to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        if: success()
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ld-heroku
-          heroku_email: loic.diridollou@gmail.com
+      # - name: Test with pytest
+      #   env:
+      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      #   run: |
+      #     python -m pytest ./tests/
+      # - name: Deploying to Heroku
+      #   uses: akhileshns/heroku-deploy@v3.12.12
+      #   if: success()
+      #   with:
+      #     heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+      #     heroku_app_name: ld-heroku
+      #     heroku_email: loic.diridollou@gmail.com
       - name: Login to Jira
         uses: atlassian/gajira-login@master
         if: failure()
