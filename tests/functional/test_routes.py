@@ -1,14 +1,11 @@
 # tests/functional/test_routes.py
 import json
-from unittest.mock import patch
 
 from application import create_app
 
 
 def test_home_page():
-    with patch("application.models.db_setup") as mock_db_setup:
-        __import__("pdb").set_trace()
-        app = create_app()
+    app = create_app()
 
     with app.test_client() as test_client:
         response = test_client.get("/")
